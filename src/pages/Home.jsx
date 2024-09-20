@@ -11,34 +11,62 @@ function Home() {
 
     const mainRef = useRef();
 
-    useGSAP(()=>{
+    useGSAP(() => {
 
-        gsap.from('.partners',{
-            y:100,
-            duration:2,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.partners',
-                start:'top 75%',
-                end:'bottom 75%',
+        gsap.from('.partners', {
+            y: 100,
+            duration: 2,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.partners',
+                start: 'top 75%',
+                end: 'bottom 75%',
                 // scrub:1,
                 // markers:1,
             }
         })
-        gsap.from('.discover',{
-            y:30,
-            duration:2,
-            opacity:0,
-            scrollTrigger:{
-                trigger:'.discover',
-                start:'top 80%',
-                end:'bottom 80%',
+        gsap.from('.discover', {
+            y: 30,
+            duration: 2,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: '.discover',
+                start: 'top 80%',
+                end: 'bottom 80%',
                 // scrub:1,
-                markers:1,
+                // markers: 1,
             }
         })
 
-    },{dependencies : [],scope:mainRef})
+        gsap.to('.holder img',
+            {
+                clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100%)",
+                opacity: 1,
+                duration: 1.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.holder img',
+                    start: 'top 80%',
+                    end: 'top 30%',
+                    scrub: 1,
+                    markers: 1
+                },
+            });
+
+
+        // var tl = gsap.timeline({ paused: true });
+
+        // tl
+        //     .fromTo(".holder", { yPercent: -100 }, { duration: 0.5, yPercent: 0 })
+        //     .fromTo(".holder img", { yPercent: 100 }, { duration: 0.5, yPercent: 0 }, "<")
+        //     .reverse();
+
+        // $(".btn").on("click", function () {
+        //     tl.reversed(!tl.reversed());
+        // })
+
+
+    }, { dependencies: [], scope: mainRef })
 
     let list = [[
         {
@@ -160,7 +188,7 @@ function Home() {
             col: 2
         }
     ]
-    
+
     return (
         <div className="w-full bg-[#FCFCFC]" ref={mainRef}>
             <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full  bg-[#FCFCFC]">
@@ -226,12 +254,12 @@ function Home() {
                     <div className="w-[682px] max-w-full text-[#232323] xl:text-[80px]  lg:text-[55px] md:text-[40px] text-[28px] font-semibold font-['Bricolage Grotesque'] md:hidden block md:tracking-[2px] tracking-[1.12px] xl:tracking-[3.20px] leading-[1.1]">Take advantage of every chance on the chain</div>
                 </div>
             </div>
-            <div className="lg:px-16 md:px-8 px-4 w-full overflow-x-hidden  bg-[#FCFCFC]">
+            <div className="holder lg:px-16 md:px-8 px-4 w-full overflow-x-hidden  bg-[#FCFCFC]">
                 <div className="w-full md:flex justify-end hidden">
-                    <img src={leadingline} alt="leadingline" />
+                    <img className="opacity-0" src={leadingline} alt="leadingline" />
                 </div>
                 <div className="w-full md:hidden justify-end flex">
-                    <img src={l2} alt="leadingline" />
+                    <img className="opacity-0" src={l2} alt="leadingline" />
                 </div>
                 <div className="max-w-full flex justify-end">
                     <div className="md:w-[421px] sm:w-[320px] xss:w-[250px] w-[200px] max-w-full">
