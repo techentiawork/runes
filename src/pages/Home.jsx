@@ -25,6 +25,7 @@ function Home() {
                 // markers:1,
             }
         })
+
         gsap.from('.discover', {
             y: 30,
             duration: 2,
@@ -46,12 +47,60 @@ function Home() {
                 ease: 'power2.out',
                 scrollTrigger: {
                     trigger: '.holder img',
-                    start: 'top 80%',
-                    end: 'top 30%',
-                    scrub: 1,
-                    markers: 1
+                    start: 'top 50%',
+                    end: 'top 0%',
+                    // scrub: 1,
+                    // markers: 1
                 },
             });
+       
+            gsap.fromTo('.runes-right', 
+                { clipPath: "inset(0% 0% 100% 0%)"},
+                { 
+                  clipPath: "inset(0% 0% 0% 0%)",
+                  duration: 1.5,
+                  ease: 'power2.in',
+                  scrollTrigger: {
+                    trigger: '.runes-right',
+                    start: 'top 70%',
+                    end: 'top -10%',
+                    // scrub: 1,
+                    // markers: 1 
+                  }
+                }
+              );
+              
+              gsap.fromTo('.runes-left', 
+                { clipPath: "inset(0% 0% 100% 0%)"},
+                { 
+                  clipPath: "inset(0% 0% 0% 0%)",
+                  duration: 1.5,
+                  ease: 'power2.out',
+                  scrollTrigger: {
+                    trigger: '.runes-left',
+                    start: 'top 60%',
+                    end: 'top 20%',
+                    // scrub: 1,
+                    // markers: 1 
+                  }
+                }
+              );
+
+              gsap.utils.toArray('.hbc').forEach((sec,index)=>{
+                gsap.from(sec,{
+                    scale:0,
+                    opacity:0,
+                    y:20,
+                    duration:1,
+                    scrollTrigger:{
+                        trigger:sec,
+                        start:'top 80%',
+                        end:'bottom 80%',
+                        markers:1
+                    }
+                })
+              })
+              
 
 
         // var tl = gsap.timeline({ paused: true });
@@ -218,7 +267,7 @@ function Home() {
                     </div>
                 </div>
                 <div className="w-full flex justify-center"><span className="sm:hidden py-5 text-black text-[10px] font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidden py-5 text-black text-[10px] font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
-                <div className="flex w-full justify-center ani-main">
+                <div className="flex w-full justify-center ani-main h-[88vw] sm:h-[105vw] lg:h-[1030px]">
                     <img src={herow} alt="World" className="ani-world " />
                     <img src={co1} className="ani-coin-1 ani-coin " alt="co1" />
                     <img src={co2} className="ani-coin-2 ani-coin " alt="co1" />
@@ -229,19 +278,19 @@ function Home() {
                 <div className="w-full flex justify-center"><span className="sm:hidden py-5 text-black text-[10px] font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidden py-5 text-black text-[10px] font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
             </div>
             <div className="partners w-[1440px] xl:w-full max-w-full bg-white flex justify-center lg:py-[96px] py-[64px] xl:py-[150px]">
-                <div className="w-[712px] max-w-full px-4 md:block hidden">
+                <div className="w-[712px] max-w-full px-4 md:bloc hidden">
                     <div className="text-center text-[#111111] text-sm font-normal font-['Inter'] uppercase leading-[21px] tracking-widest">Decentralized Governance</div>
                     <div className="w-[656px] max-w-full text-center text-[#1f1f1f] text-xl font-normal font-['Inter']">We facilitate simple, seamless cross-chain interactions for digital asset management. RunesBridgeV promotes security, integrity, and cost-effectiveness through robust institutionalization and an innovative decentralized architecture.</div>
                 </div>
-                <div className="md:hidden flex flex-col gap-5 ">
+                <div className="md:hidde flex flex-col gap-5 w-full">
                     <div className="text-center text-[#111111] text-xs font-normal font-['Inter'] uppercase leading-[21px] tracking-wide">Trusted by our incredible partners</div>
-                    <div className="flex flex-wrap gap-5 justify-center px-12">
-                        <img src={comp1} alt="Comp" />
-                        <img src={comp2} alt="Comp" />
-                        <img src={comp3} alt="Comp" />
-                        <img src={comp4} alt="Comp" />
-                        <img src={comp5} alt="Comp" />
-                        <img src={comp6} alt="Comp" />
+                    <div className="flex flex-wrap gap-y-20 gap-x-10 2xl:gap-x-20 justify-center px-12">
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp1} alt="Comp" />
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp2} alt="Comp" />
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp3} alt="Comp" />
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp4} alt="Comp" />
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp5} alt="Comp" />
+                        <img className="w-[25%] 2xl:w-[23%]" src={comp6} alt="Comp" />
                     </div>
                 </div>
             </div>
@@ -261,15 +310,15 @@ function Home() {
                 <div className="w-full md:hidden justify-end flex">
                     <img className="opacity-0" src={l2} alt="leadingline" />
                 </div>
-                <div className="max-w-full flex justify-end">
+                <div className=" max-w-full flex justify-end">
                     <div className="md:w-[421px] sm:w-[320px] xss:w-[250px] w-[200px] max-w-full">
-                        <div className="w-[421px] max-w-full"><span className="text-[#bcbcbc] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-normal font-['Inter']">The RunesBridge-V project is pioneering the integration of Ethereum and Bitcoin, Expanding the importance of interoperability in blockchain technology. </span><span className="text-[#1a1a1a] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-bold font-['Inter']">By bridging {"Ethereum's"} smart contract capabilities with {"Bitcoin's"} security, RunesBridge-V aims to set and grow a new standard for hybrid or dual launch projects.</span><span className="text-[#bcbcbc] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-normal font-['Inter']"> This infrastructure solidifies a commitment to uniting the two most important blockchain ecosystems with a decentralized bridge layer while carefully selecting and supporting projects to promote responsible growth in the crypto space.</span></div>
+                        <div className="runes-right w-[421px] max-w-full"><span className="text-[#bcbcbc] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-normal font-['Inter']">The RunesBridge-V project is pioneering the integration of Ethereum and Bitcoin, Expanding the importance of interoperability in blockchain technology. </span><span className="text-[#1a1a1a] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-bold font-['Inter']">By bridging {"Ethereum's"} smart contract capabilities with {"Bitcoin's"} security, RunesBridge-V aims to set and grow a new standard for hybrid or dual launch projects.</span><span className="text-[#bcbcbc] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-normal font-['Inter']"> This infrastructure solidifies a commitment to uniting the two most important blockchain ecosystems with a decentralized bridge layer while carefully selecting and supporting projects to promote responsible growth in the crypto space.</span></div>
                     </div>
                 </div>
             </div>
             <div className="lg:px-16 md:px-8 px-4 w-full overflow-x-hidden lg:py-[156px] py-20  bg-[#FCFCFC]">
                 <div className="flex-col justify-start items-start gap-[156px] inline-flex w-full">
-                    <div className="sm:w-[636px] md:w-full xs:w-full w-[291px] max-w-full flex flex-col gap-4">
+                    <div className="runes-left sm:w-[636px] md:w-full xs:w-full w-[291px] max-w-full flex flex-col gap-4">
                         <div className="w-[686px] max-w-full text-[#232323] lg:text-[48px] md:text-[36px] sm:text-[30px] text-[24px] xl:text-6xl font-semibold font-['Bricolage Grotesque'] tracking-[0.96px] md:tracking-widest">Powerful and Solid Bridging Mechanism</div>
                         <div className="w-[636px] max-w-full text-[#bcbcbc] lg:text-[26px] md:text-[20px] text-[14px] sm:text-[18px] xl:text-[32px] font-normal font-['Inter']">We facilitate simple, seamless cross-chain interactions for digital asset management. RunesBridgeV promotes security, integrity, and cost-effectiveness through robust institutionalization and an innovative decentralized architecture.</div>
                     </div>
