@@ -96,7 +96,7 @@ function Home() {
                         trigger:sec,
                         start:'top 80%',
                         end:'bottom 80%',
-                        markers:1
+                        // markers:1
                     }
                 })
               })
