@@ -10,7 +10,7 @@ function Navbar() {
     const loc = useLocation();
     return (
         <>
-            <div className={`lg:px-16 lg:py-7 py-4 md:px-8 px-4 h-15 flex justify-between items-center relative ${loc.pathname == "/" ? "bg-[#FCFCFC]" : "bg-white"}`}>
+            <div className={`h-[80px] lg:h-[109.6px] lg:px-16 lg:py-7 py-4 md:px-8 px-4 h-15 flex justify-between items-center relative ${loc.pathname == "/" ? "bg-[#FCFCFC]" : "bg-white"}`}>
                 <div className="flex items-center">
                     <Link to={'/blog'}>
                         <div className="text-black md:text-2xl sm:text-[19px] text-[14px] font-normal font-lato">RunesBridge</div>

@@ -13,6 +13,83 @@ function Home() {
 
     useGSAP(() => {
 
+        gsap.from('.globe', {
+            rotate: '60deg',
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,  
+            }
+        })
+        gsap.from('.ani-coin-1', {
+            x: '60vh',
+            y: '60vh',
+            opacity: 0,
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,
+            }
+        })
+        gsap.from('.ani-coin-2', {
+            x: '60vh',
+            y: '60vh',
+            opacity: 0,
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,
+            }
+        })
+        gsap.from('.ani-coin-3', {
+            x: '-60vh',
+            y: '60vh',
+            opacity: 0,
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,
+            }
+        })
+        gsap.from('.ani-coin-4', {
+            x: '-60vh',
+            y: '60vh',
+            opacity: 0,
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,
+            }
+        })
+        gsap.from('.ani-coin-5', {
+            x: '-60vh',
+            y: '60vh',
+            opacity: 0,
+            dureation: 2,
+            scrollTrigger: {
+                trigger: '.globe',
+                start: "top 300vh",
+                end: "top 250vh",
+                scrub: 1,
+                // markers:1,
+            }
+        })
+
         gsap.from('.partners', {
             y: 100,
             duration: 2,
@@ -39,81 +116,66 @@ function Home() {
             }
         })
 
-        gsap.to('.holder img',
+        gsap.to('.holder img', {
+            clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100%)",
+            opacity: 1,
+            duration: 1.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.holder',
+                start: 'top 60%',
+                end: 'top 30%',
+                // scrub: 1,
+                // markers: 1
+            }
+        });
+
+        gsap.fromTo('.runes-right',
+            { clipPath: "inset(0% 0% 100% 0%)" },
             {
-                clipPath: "polygon(0% 0%, 100% 0%,100% 100%, 0% 100%)",
-                opacity: 1,
+                clipPath: "inset(0% 0% 0% 0%)",
                 duration: 1.5,
-                ease: 'power2.out',
+                ease: 'power2.in',
                 scrollTrigger: {
-                    trigger: '.holder img',
-                    start: 'top 50%',
-                    end: 'top 0%',
-                    // scrub: 1,
-                    // markers: 1
-                },
-            });
-       
-            gsap.fromTo('.runes-right', 
-                { clipPath: "inset(0% 0% 100% 0%)"},
-                { 
-                  clipPath: "inset(0% 0% 0% 0%)",
-                  duration: 1.5,
-                  ease: 'power2.in',
-                  scrollTrigger: {
                     trigger: '.runes-right',
                     start: 'top 70%',
                     end: 'top -10%',
                     // scrub: 1,
                     // markers: 1 
-                  }
                 }
-              );
-              
-              gsap.fromTo('.runes-left', 
-                { clipPath: "inset(0% 0% 100% 0%)"},
-                { 
-                  clipPath: "inset(0% 0% 0% 0%)",
-                  duration: 1.5,
-                  ease: 'power2.out',
-                  scrollTrigger: {
+            }
+        );
+
+        gsap.fromTo('.runes-left',
+            { clipPath: "inset(0% 0% 100% 0%)" },
+            {
+                clipPath: "inset(0% 0% 0% 0%)",
+                duration: 1.5,
+                ease: 'power2.out',
+                scrollTrigger: {
                     trigger: '.runes-left',
                     start: 'top 60%',
                     end: 'top 20%',
                     // scrub: 1,
                     // markers: 1 
-                  }
                 }
-              );
+            }
+        );
 
-              gsap.utils.toArray('.hbc').forEach((sec,index)=>{
-                gsap.from(sec,{
-                    scale:0,
-                    opacity:0,
-                    y:20,
-                    duration:1,
-                    scrollTrigger:{
-                        trigger:sec,
-                        start:'top 80%',
-                        end:'bottom 80%',
-                        // markers:1
-                    }
-                })
-              })
-              
-
-
-        // var tl = gsap.timeline({ paused: true });
-
-        // tl
-        //     .fromTo(".holder", { yPercent: -100 }, { duration: 0.5, yPercent: 0 })
-        //     .fromTo(".holder img", { yPercent: 100 }, { duration: 0.5, yPercent: 0 }, "<")
-        //     .reverse();
-
-        // $(".btn").on("click", function () {
-        //     tl.reversed(!tl.reversed());
-        // })
-
+        gsap.utils.toArray('.hbc').forEach((sec, index) => {
+            gsap.from(sec, {
+                scale: 0,
+                opacity: 0,
+                y: 20,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: sec,
+                    start: 'top 80%',
+                    end: 'bottom 80%',
+                    // markers:1
+                }
+            })
+        })
 
     }, { dependencies: [], scope: mainRef })
 
@@ -239,9 +301,9 @@ function Home() {
     ]
 
     return (
-        <div className="w-full bg-[#FCFCFC]" ref={mainRef}>
+        <div className="w-full bg-[#FCFCFC] overflow-x-hidden" ref={mainRef}>
             <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full  bg-[#FCFCFC]">
-                <div className="w-full flex justify-center">
+                <div className="w-full flex justify-center h-[376.8px] sm:h-[295.25px] lg:h-[373.2px] ">
                     <div className="w-[668px] max-w-full flex-col flex items-center gap-4">
                         <div className=" pt-4 sm:border-t-[1px] border-[rgba(0,0,0,0.04)] w-[422px] max-w-full flex justify-center">
                             <div className="w-[154.28px] max-w-full h-[30px] bg-[#fcfcfc] flex justify-center items-center rounded-[100px] shadow border border-[#dadada]">
@@ -252,7 +314,9 @@ function Home() {
                             <div className="flex items-center justify-center py-4 border-t-[1px] w-[90%] border-b-[1px] border-[rgba(0,0,0,0.08)]">
 
                                 <div className="text-black lg:text-[48px] md:text-[36px] text-[27px] xl:text-[64px] font-normal font-['Bricolage Grotesque'] ">RunesBridge </div>
-                                <img className="lg:w-[79.56px] w-[54px] max-w-full lg:h-[90.35px]" src={logol} />
+                                <div className="lg:w-[79.56px] w-[54px] relative h-[61.31px] lg:h-[90.35px]">
+                                <img className="w-full h-full" src={logol} />
+                                </div>
                             </div>
                             <div className="flex-col justify-start items-center gap-4 inline-flex">
                                 <div className="text-center text-[#444444] md:text-[15px] text-[12px] lg:text-lg font-normal font-['Inter'] md:w-full w-[296px] leading-relaxed py-3 lg:py-4 border-b-[1px] border-[rgba(0,0,0,0.08)]">A fork of RunesBridge, RunesBridge-V is a decentralized platform including a bridge layer built to unlock liquidity and community through interoperability between blockchains.</div>
@@ -268,14 +332,13 @@ function Home() {
                 </div>
                 <div className="w-full flex justify-center"><span className="sm:hidden py-5 text-black text-[10px] font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidden py-5 text-black text-[10px] font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
                 <div className="flex w-full justify-center ani-main h-[88vw] sm:h-[105vw] lg:h-[1030px]">
-                    <img src={herow} alt="World" className="ani-world " />
-                    <img src={co1} className="ani-coin-1 ani-coin " alt="co1" />
-                    <img src={co2} className="ani-coin-2 ani-coin " alt="co1" />
-                    <img src={co3} className="ani-coin-3 ani-coin " alt="co1" />
-                    <img src={co4} className="ani-coin-4 ani-coin " alt="co1" />
-                    <img src={co5} className="ani-coin-5 ani-coin " alt="co1" />
+                    <img src={herow} alt="World" className="globe z-30 ani-world " />
+                    <img src={co1} className="z-0 ani-coin-1 ani-coin " alt="co1" />
+                    <img src={co2} className="z-0 ani-coin-2 ani-coin " alt="co1" />
+                    <img src={co3} className="z-0 ani-coin-3 ani-coin " alt="co1" />
+                    <img src={co4} className="z-0 ani-coin-4 ani-coin " alt="co1" />
+                    <img src={co5} className="z-0 ani-coin-5 ani-coin " alt="co1" />
                 </div>
-                <div className="w-full flex justify-center"><span className="sm:hidden py-5 text-black text-[10px] font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidden py-5 text-black text-[10px] font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
             </div>
             <div className="partners w-[1440px] xl:w-full max-w-full bg-white flex justify-center lg:py-[96px] py-[64px] xl:py-[150px]">
                 <div className="w-[712px] max-w-full px-4 md:bloc hidden">
@@ -284,13 +347,13 @@ function Home() {
                 </div>
                 <div className="md:hidde flex flex-col gap-5 w-full">
                     <div className="text-center text-[#111111] text-xs font-normal font-['Inter'] uppercase leading-[21px] tracking-wide">Trusted by our incredible partners</div>
-                    <div className="flex flex-wrap gap-y-20 gap-x-10 2xl:gap-x-20 justify-center px-12">
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp1} alt="Comp" />
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp2} alt="Comp" />
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp3} alt="Comp" />
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp4} alt="Comp" />
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp5} alt="Comp" />
-                        <img className="w-[25%] 2xl:w-[23%]" src={comp6} alt="Comp" />
+                    <div className="flex flex-wrap gap-y-5 sm:gap-y-20 gap-x-10 2xl:gap-x-20 justify-center px-12">
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp1} alt="Comp" />
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp2} alt="Comp" />
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp3} alt="Comp" />
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp4} alt="Comp" />
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp5} alt="Comp" />
+                        <img className="w-[40%] sm:w-[25%] 2xl:w-[23%]" src={comp6} alt="Comp" />
                     </div>
                 </div>
             </div>
