@@ -13,7 +13,7 @@ function Home() {
 
     useGSAP(() => {
 
-        gsap.from('.globe', {
+        gsap.to('.globe', {
             rotate: '60deg',
             dureation: 2,
             scrollTrigger: {
@@ -24,7 +24,7 @@ function Home() {
                 // markers:1,  
             }
         })
-        gsap.from('.ani-coin-1', {
+        gsap.to('.ani-coin-1', {
             x: '60vh',
             y: '60vh',
             opacity: 0,
@@ -37,7 +37,7 @@ function Home() {
                 // markers:1,
             }
         })
-        gsap.from('.ani-coin-2', {
+        gsap.to('.ani-coin-2', {
             x: '60vh',
             y: '60vh',
             opacity: 0,
@@ -50,7 +50,7 @@ function Home() {
                 // markers:1,
             }
         })
-        gsap.from('.ani-coin-3', {
+        gsap.to('.ani-coin-3', {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
@@ -63,7 +63,7 @@ function Home() {
                 // markers:1,
             }
         })
-        gsap.from('.ani-coin-4', {
+        gsap.to('.ani-coin-4', {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
@@ -76,7 +76,7 @@ function Home() {
                 // markers:1,
             }
         })
-        gsap.from('.ani-coin-5', {
+        gsap.to('.ani-coin-5', {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
