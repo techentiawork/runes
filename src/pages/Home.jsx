@@ -1,5 +1,10 @@
 import Lottie from "lottie-react";
-import { ani1, ani2, ani3, anim1, anim2, anim3, anism1, anism2, anism3, anism4, bitcoin, co1, co2, co3, co4, co5, comp1, comp2, comp3, comp4, comp5, comp6, drone, drone2, evm, gl1, gl2, gl3, gl4, gl5, gl6, gl7, gl8, gl9, gr1, gr2, gr3, gr4, gr5, gr6, herow, l2, leadingline, logol, runes, solana, zetachain } from "../assets";
+import { anim1, anim2, anim3, anism1, anism2, anism3, anism4, bitcoin, co1, co2, co3, co4, co5, comp1, comp2, comp3, comp4, comp5, comp6, drone, drone2, evm, gl1, gl2, gl3, gl4, gl5, gl6, gl7, gl8, gl9, gr1, gr2, gr3, gr4, gr5, gr6, herow, l2, leadingline, logol, runes, solana, zetachain } from "../assets";
+import para from '../assets/para.json'
+import govt from '../assets/govt.json'
+import dec from '../assets/dec.json'
+
+
 import { Footer } from "../components";
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -531,7 +536,7 @@ function Home() {
                             </div>
                             <div className="w-[35%] flex justify-center ">
                                 <div className="w-[80%] lg:w-[280px]">
-                                    <Lottie animationData={anim2} loop={true} />
+                                    <Lottie animationData={para} loop={true} />
                                 </div>
                             </div>
                         </div>
@@ -542,7 +547,7 @@ function Home() {
                             </div>
                             <div className="flex justify-center w-[35%] ">
                                 <div className="w-[80%] lg:w-[280px]">
-                                    <Lottie animationData={anim2} loop={true} />
+                                    <Lottie animationData={govt} loop={true} />
                                 </div>
                             </div>
                         </div>
@@ -554,7 +559,7 @@ function Home() {
                             <div className="flex justify-center w-[35%] ">
                                 {/* <img src={anism1} alt="Ani1" className="lg:hidden w-full" /> */}
                                 <div className="w-[80%] lg:w-[280px]">
-                                    <Lottie animationData={anim2} loop={true} />
+                                    <Lottie animationData={dec} loop={true} />
                                 </div>
                             </div>
                         </div>
