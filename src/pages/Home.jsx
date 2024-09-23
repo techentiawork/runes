@@ -19,12 +19,12 @@ function Home() {
     useGSAP(() => {
 
         gsap.to('.globe', {
-            rotate: '60deg',
-            dureation: 2,
+            rotate: '180deg',
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 50vh",
                 scrub: 1,
                 // markers:1,  
             }
@@ -33,11 +33,11 @@ function Home() {
             x: '60vh',
             y: '60vh',
             opacity: 0,
-            dureation: 2,
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 150vh",
                 scrub: 1,
                 // markers:1,
             }
@@ -46,11 +46,11 @@ function Home() {
             x: '60vh',
             y: '60vh',
             opacity: 0,
-            dureation: 2,
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 150vh",
                 scrub: 1,
                 // markers:1,
             }
@@ -59,11 +59,11 @@ function Home() {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
-            dureation: 2,
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 150vh",
                 scrub: 1,
                 // markers:1,
             }
@@ -72,11 +72,11 @@ function Home() {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
-            dureation: 2,
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 150vh",
                 scrub: 1,
                 // markers:1,
             }
@@ -85,11 +85,11 @@ function Home() {
             x: '-60vh',
             y: '60vh',
             opacity: 0,
-            dureation: 2,
+            duration: 6,
             scrollTrigger: {
                 trigger: '.globe',
-                start: "top 300vh",
-                end: "top 250vh",
+                start: "top 450vh",
+                end: "top 150vh",
                 scrub: 1,
                 // markers:1,
             }
@@ -326,8 +326,8 @@ function Home() {
                             <div className="flex-col justify-start items-center gap-4 inline-flex">
                                 <div className="text-center text-[#444444] md:text-[15px] text-[12px] lg:text-lg font-normal font-['Inter'] md:w-full w-[296px] leading-relaxed py-3 lg:py-4 border-b-[1px] border-[rgba(0,0,0,0.08)]">A fork of RunesBridge, RunesBridge-V is a decentralized platform including a bridge layer built to unlock liquidity and community through interoperability between blockchains.</div>
                                 <div className="justify-start items-center gap-4 flex xxs:flex-row flex-col">
-                                    <div className="wallet-btn">Buy now</div>
-                                    <div className="px-6 py-3.5 bg-white rounded-[10px] border border-[#cccccc] justify-center items-center gap-2.5 flex">
+                                    <div className="wallet-btn cursor-pointer">Buy now</div>
+                                    <div className="px-6 py-3.5 cursor-pointer bg-white rounded-[10px] border border-[#cccccc] justify-center items-center gap-2.5 flex">
                                         <div className="text-center text-[#444444] text-sm font-semibold font-['Inter'] leading-tight">Read Whitepaper</div>
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex justify-center"><span className="sm:hidden py-5 text-black text-[10px] font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidden py-5 text-black text-[10px] font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
+                <div className="w-full flex justify-center"><span className="sm:hidde py-8 text-black text-[10px] sm:text-base font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidde py-8 text-black text-[10px] sm:text-base font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
                 <div className="flex w-full justify-center ani-main h-[88vw] sm:h-[105vw] lg:h-[1030px]">
                     <img src={herow} alt="World" className="globe z-30 ani-world " />
                     <img src={co1} className="z-0 ani-coin-1 ani-coin " alt="co1" />
@@ -344,8 +344,9 @@ function Home() {
                     <img src={co4} className="z-0 ani-coin-4 ani-coin " alt="co1" />
                     <img src={co5} className="z-0 ani-coin-5 ani-coin " alt="co1" />
                 </div>
+                <div className="w-full flex justify-center"><span className="sm:hidde py-8 text-black text-[10px] sm:text-base font-normal font-['Inter'] tracking-tight">Contract address</span><span className="sm:hidde py-8 text-black text-[10px] sm:text-base font-light font-['Inter'] tracking-tight"> - 0x25574757585885575ef</span></div>
             </div>
-            <div className="partners w-[1440px] xl:w-full max-w-full bg-white flex justify-center lg:py-[96px] py-[64px] xl:py-[150px]">
+            <div className="partners w-[1440px] xl:w-full max-w-full bg-white flex justify-center lg:py-[96px] py-[44px] xl:py-[60px]">
                 <div className="w-[712px] max-w-full px-4 md:bloc hidden">
                     <div className="text-center text-[#111111] text-sm font-normal font-['Inter'] uppercase leading-[21px] tracking-widest">Decentralized Governance</div>
                     <div className="w-[656px] max-w-full text-center text-[#1f1f1f] text-xl font-normal font-['Inter']">We facilitate simple, seamless cross-chain interactions for digital asset management. RunesBridgeV promotes security, integrity, and cost-effectiveness through robust institutionalization and an innovative decentralized architecture.</div>

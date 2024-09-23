@@ -12,7 +12,7 @@ function Navbar() {
         <>
             <div className={`h-[80px] lg:h-[109.6px] lg:px-16 lg:py-7 py-4 md:px-8 px-4 h-15 flex justify-between items-center relative ${loc.pathname == "/" ? "bg-[#FCFCFC]" : "bg-white"}`}>
                 <div className="flex items-center">
-                    <Link to={'/blog'}>
+                    <Link to={'/'}>
                         <div className="text-black md:text-2xl sm:text-[19px] text-[14px] font-normal font-lato">RunesBridge</div>
                     </Link>
                     <img src={logo} className="md:w-[35px] md:h-[39px] w-28px] h-[31px]" alt="Logo" />
@@ -43,7 +43,7 @@ function Navbar() {
                     </Link>
                 </div>
                 <Link to={"/dashboard"} className="flex items-center gap-0.5">
-                    <div className="wallet-btn">Wallet</div>
+                    <div className="wallet-btn">Launch App</div>
                     <img src={menu} alt="Menu" className="lg:hidden w-5" onClick={() => dispatch(setNavOpen(!navOpen))} />
                 </Link>
             </div>

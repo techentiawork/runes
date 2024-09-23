@@ -42,7 +42,7 @@ function Footer() {
                             <img className="w-5 h-5" src={maskgroup3} alt="maskgroup3" />
                         </Link>
                     </div>
-                    <div className="wallet-btn">Launch</div>
+                    <div className="wallet-btn">Launch App</div>
                 </div>
                 <div className="flex justify-between w-full">
                     <div className="flex flex-col gap-[15px] text-[#5a585a] text-[12px] md:text-[14px] lg:text-base font-medium font-inter leading-none">
