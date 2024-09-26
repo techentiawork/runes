@@ -559,7 +559,7 @@ function Home() {
                             </div>
                             <div className="flex justify-center w-[35%] ">
                                 {/* <img src={anism1} alt="Ani1" className="lg:hidden w-full" /> */}
-                                <div className="w-[80%] lg:w-[280px]">
+                                <div className="w-[80%] lg:w-[280px] ">
                                     <Lottie animationData={dec} loop={true} />
                                 </div>
                             </div>
