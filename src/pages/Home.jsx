@@ -372,7 +372,7 @@ function Home() {
                     <div className="w-[682px] max-w-full text-[#232323] xl:text-[80px]  lg:text-[55px] md:text-[40px] text-[28px] font-semibold font-['Bricolage Grotesque'] md:hidden block md:tracking-[2px] tracking-[1.12px] xl:tracking-[3.20px] leading-[1.1]">Take advantage of every chance on the chain</div>
                 </div>
             </div>
-            <div className="holder lg:px-16 md:px-8 px-4 w-full overflow-x-hidden  bg-[#FCFCFC]">
+            <div className="holder xl:px-[133px] px-4 md:px-8 w-full overflow-x-hidden  bg-[#FCFCFC]">
                 <div className="w-full md:flex justify-end hidden">
                     <img className="opacity-0" src={leadingline} alt="leadingline" />
                 </div>
@@ -385,7 +385,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="lg:px-16 md:px-8 px-4 w-full overflow-x-hidden lg:py-[156px] py-20  bg-[#FCFCFC]">
+            <div className="xl:px-[133px] px-4 md:px-8 w-full overflow-x-hidden lg:py-[156px] py-20  bg-[#FCFCFC]">
                 <div className="flex-col justify-start items-start gap-[156px] inline-flex w-full">
                     <div className="runes-left sm:w-[636px] md:w-full xs:w-full w-[291px] max-w-full flex flex-col gap-4">
                         <div className="w-[686px] max-w-full text-[#232323] lg:text-[48px] md:text-[36px] sm:text-[30px] text-[24px] xl:text-6xl font-semibold font-['Bricolage Grotesque'] tracking-[0.96px] md:tracking-widest">Powerful and Solid Bridging Mechanism</div>
@@ -394,7 +394,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className="lg:px-16 md:px-8 px-4 lg:py-20 pt-5 pb-16 bg-white justify-between gap-6 items-center flex w-full xxs:flex-row flex-col">
+            <div className="xl:px-[133px] px-4 md:px-8 lg:py-20 pt-5 pb-16 bg-white justify-between gap-6 items-center flex w-full xxs:flex-row flex-col">
                 <div className="lg:w-[545.03px] xxs:w-[50%] max-w-full flex flex-col gap-3 md:gap-6">
                     <div className="text-[#232323] lg:text-[48px] md:text-[36px] sm:text-[30px] text-[24px] xl:text-[64px] font-semibold font-['Bricolage Grotesque'] tracking-[2.56px]">The Runes Protocol:</div>
                     <div className="w-[417.33px] max-w-full text-[#5a585a] lg:text-[20px] md:text-[16px] sm:text-[14px] text-[12px] xl:text-2xl font-medium font-['Inter']">The Runes Protocol: The Safety, Longevity and Governance of Bitcoin.</div>
@@ -429,7 +429,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="lg:my-20 py-10 md:px-9 px-4 w-full bg-[#FCFCFC]">
+            <div className="lg:my-20 py-10 xl:px-[133px] px-4 md:px-8 w-full bg-[#FCFCFC]">
                 <div className="pb-6 flex-col justify-center gap-2 inline-flex w-full items-center lg:hidden">
                     <div className="text-center text-[#232323] text-2xl font-semibold font-['Bricolage Grotesque'] tracking-wide">Get to know our ecosytem</div>
                     <div className="text-center text-[#5a585a] text-xs font-medium font-['Inter']">Our trusted partners ensure secure transactions, innovative technology, and reliable support for your crypto success.</div>
@@ -494,12 +494,12 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div className="lg:px-16 md:px-8 px-4 py-20 bg-white justify-between gap-6 items-center flex w-full">
+            <div className="xl:px-[133px] px-4 md:px-8 py-20 bg-white justify-between gap-6 items-center flex w-full">
                 <div className="w-full">
                     <div className="pb-[46px] md:block hidden"><span className="text-[#ff0025] text-[32px] font-extrabold font-['Inter'] leading-[34px]">.</span><span className="text-black text-[32px] font-medium font-['Inter'] leading-[34px]">Secure and private</span></div>
                     <div className="flex flex-col gap-3">
-                        <div className=" text-black lg:text-[60px] md:text-[48px] sm:text-[36px] text-[24px] xl:text-8xl font-medium font-['Bricolage Grotesque'] leading-normal lg:tracking-[4px] md:tracking-[2px] tracking-[0.96px] xl:tracking-[8.64px]">RunesBridge-V Platform</div>
-                        <div className="flex  text-black lg:text-[60px] md:text-[48px] sm:text-[36px] text-[24px] xl:text-8xl font-medium font-['Bricolage Grotesque'] leading-normal lg:tracking-[4px] md:tracking-[2px] tracking-[0.96px] xl:tracking-[8.64px] relative overflow-hidden">
+                        <div className=" text-black lg:text-[60px] md:text-[28px] sm:text-[30px] text-[20px] xl:text-7xl font-medium font-['Bricolage Grotesque'] leading-normal lg:tracking-[4px] md:tracking-[2px] tracking-[0.96px] xl:tracking-[8.64px]">RunesBridge-V Platform</div>
+                        <div className="flex  text-black lg:text-[60px] md:text-[28px] sm:text-[30px] text-[20px] xl:text-7xl font-medium font-['Bricolage Grotesque'] leading-normal lg:tracking-[4px] md:tracking-[2px] tracking-[0.96px] xl:tracking-[8.64px] relative overflow-hidden">
                             <span className="relative left-0">and neeche cards
                                 <img src={drone} alt="Drone" className="md:block hidden absolute  top-[50%] left-[100%] translate-y-[-50%]" />
                                 <img src={drone2} alt="Drone" className="md:hidden block absolute  left-[100%] top-[50%] translate-y-[-50%]" />
@@ -510,7 +510,7 @@ function Home() {
                     <div className="lg:pt-20 md:pt-10 pt-6 w-full flex flex-col md:gap-[30px] gap-4 lg:gap-[45px]">
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1">
                             <div className="w-[60%] md:w-full">
-                                <div className="text-black lg:text-[60px] md:text-[48px] sm:text-[30px] text-[18px] xl:text-[80px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">An Incubator:</div>
+                                <div className="text-black lg:text-[50px] md:text-[38px] sm:text-[24px] text-[18px] xl:text-[60px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">An Incubator:</div>
                                 <div className="max-w-[642px] text-black lg:text-[28px] md:text-[22px] sm:text-[16px] text-[12px] xl:text-[34.88px] font-normal font-['Inter'] leading-[1.3]">Advisors help launch new projects dual-chain.</div>
                             </div>
                             <div className="w-[35%] flex justify-center ">
@@ -521,7 +521,7 @@ function Home() {
                         </div>
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1">
                             <div className="w-[60%] md:w-full">
-                                <div className="text-black lg:text-[60px] md:text-[48px] sm:text-[30px] text-[18px] xl:text-[80px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Decentralized Business Development Team:</div>
+                                <div className="text-black lg:text-[50px] md:text-[38px] sm:text-[24px] text-[18px] xl:text-[60px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Decentralized Business Development Team:</div>
                                 <div className="max-w-[642px] text-black lg:text-[28px] md:text-[22px] sm:text-[16px] text-[12px] xl:text-[34.88px] font-normal font-['Inter'] leading-[1.3]">It will be easier to use and more accessible with an intuitive interface, which will help the organic industry grow.</div>
                             </div>
                             <div className="w-[35%] flex justify-center ">
@@ -532,7 +532,7 @@ function Home() {
                         </div>
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1 order-2">
                             <div className="w-[60%] md:w-full">
-                                <div className="text-black lg:text-[60px] md:text-[48px] sm:text-[30px] text-[18px] xl:text-[80px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Airdrop Guild:</div>
+                                <div className="text-black lg:text-[50px] md:text-[38px] sm:text-[24px] text-[18px] xl:text-[60px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Airdrop Guild:</div>
                                 <div className="max-w-[642px] text-black lg:text-[28px] md:text-[22px] sm:text-[16px] text-[12px] xl:text-[34.88px] font-normal font-['Inter'] leading-[1.3]">We’ve mastered the art of airdrops for the purpose of supporting and growing projects and communities. Our token holders can expect to be part of the launch of many new entrants into the space and enjoy fun and exciting airdrops.</div>
                             </div>
                             <div className="w-[35%] flex justify-center ">
@@ -543,7 +543,7 @@ function Home() {
                         </div>
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1">
                             <div className="w-[60%] md:w-full">
-                                <div className="text-black lg:text-[60px] md:text-[48px] sm:text-[30px] text-[18px] xl:text-[80px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Governance Council:</div>
+                                <div className="text-black lg:text-[50px] md:text-[38px] sm:text-[24px] text-[18px] xl:text-[60px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Governance Council:</div>
                                 <div className="max-w-[642px] text-black lg:text-[28px] md:text-[22px] sm:text-[16px] text-[12px] xl:text-[34.88px] font-normal font-['Inter'] leading-[1.3]">	Governance Council:Makes decisions and manages all high-level needs of the project to ensure long-term autonomy, growth, and success.</div>
                             </div>
                             <div className="flex justify-center w-[35%] ">
@@ -554,7 +554,7 @@ function Home() {
                         </div>
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1">
                             <div className="w-[60%] md:w-full">
-                                <div className="text-black lg:text-[60px] md:text-[48px] sm:text-[30px] text-[18px] xl:text-[80px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Decentralized Bridge Layer</div>
+                                <div className="text-black lg:text-[50px] md:text-[38px] sm:text-[24px] text-[18px] xl:text-[60px] font-[600] md:font-bold font-['Bricolage Grotesque'] pb-6 leading-[1.2]">Decentralized Bridge Layer</div>
                                 <div className="max-w-[642px] text-black lg:text-[28px] md:text-[22px] sm:text-[16px] text-[12px] xl:text-[34.88px] font-normal font-['Inter'] leading-[1.3]">Decentralized Bridge Layer: Designed to connect different blockchains to unlock liquidity, expand communities, and support growth.</div>
                             </div>
                             <div className="flex justify-center w-[35%] ">
