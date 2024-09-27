@@ -1,4 +1,5 @@
 import { chain1, chain2, chain3, chain4, chainarrow, di1, di2, di3, di4 } from "../assets";
+import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 
 function Dashboard() {
@@ -256,9 +257,10 @@ function Dashboard() {
             status: "Completed"
         },
     ]
+    
     return (
         <div className="">
-            <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+            <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
                 <Sidebar />
                 <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 xxs:grid-cols-4 grid-cols-2 2xl:gap-16 sm:gap-8 gap-4 h-fit">
                     <div className="xl:p-4 md:p-2 p-1.5 rounded-xl border border-[#bcbcbc] flex-col justify-center items-center xl:gap-3 md:gap-2 gap-1 inline-flex ">
@@ -284,7 +286,7 @@ function Dashboard() {
                 </div>
             </div>
             <div className="hidden lg:block mt-10 w-full h-[1px] bg-[#bcbcbc]"></div>
-            <div className="lg:px-16 lg:py-10 py-2 md:px-8 px-4 w-full max-w-full overflow-x-hidden flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+            <div className="lg:py-10 py-2 2xl:px-[133px] px-4 md:px-8 w-full max-w-full overflow-x-hidden flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
                 <div className="p-6 lg:p-10 rounded-[16px] border-[#D9D9D9] border-[1px] ">
 
                     <div className="grid grid-cols-1 gap-10 w-full overflow-x-auto dashboard">
@@ -359,6 +361,7 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { sidea } from "../assets";
 import Sidebar from "./Sidebar";
+import Footer from "./Footer";
 
 function Airdrop() {
     const [email, setEmail] = useState("");
     return (
         <div className="">
-            <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+            <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
                 <Sidebar />
                 <div className="w-full flex flex-col gap-6 ">
                     <div className="md:flex hidden flex-col w-full gap-4">
@@ -37,7 +38,7 @@ function Airdrop() {
                     </div>
                 </div>
             </div>
-
+            <Footer/>
         </div>
     );
 }

@@ -1,24 +1,25 @@
+import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 
-function Stack() {
+function Stake() {
     return (
         <div className="">
-            <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+            <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-betwee md:gap-10 gap-6 md:flex-row flex-col">
                 <Sidebar />
-                <div className="">
-                    <div className="2xl:w-[1021px] max-w-full flex-col justify-start items-start xl:gap-6 md:gap-5 gap-4 flex">
+                <div className="w-full">
+                    <div className="2xl:w-[1021px w-full flex-col justify-start items-start xl:gap-6 md:gap-5 gap-4 flex">
                         {/* flex flex-wrap justify-start items-center */}
-                        <div className="grid grid-cols-12 xl:gap-6 md:gap-5 gap-4 w-full">
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] lg:col-span-4 xxs:col-span-6 col-span-full order-1 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-1">
+                        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 4xl:grid-cols-6 xl:gap-6 md:gap-5 gap-4 w-full">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] order-1 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-1">
                                 <div className="flex flex-col">
-                                    <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total stack</span>
+                                    <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total Stake</span>
 
                                     <span className="text-black md:text-[24px] text-[16px] xl:text-[32px] font-bold font-inter capitalize">19,262,198 RB </span>
 
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal">-168,775$</span>
                                 </div>
                             </div>
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] xxs:col-span-4 col-span-full md:col-span-6 lg:col-span-4 order-3 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-2">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] order-3 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-2">
                                 <div className="flex flex-col">
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total Rewards</span>
 
@@ -27,7 +28,7 @@ function Stack() {
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal">-$</span>
                                 </div>
                             </div>
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] xxs:col-span-4 col-span-full md:col-span-6 lg:col-span-4 order-4 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-3">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] order-4 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-3">
                                 <div className="flex flex-col">
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total Points</span>
 
@@ -35,16 +36,16 @@ function Stack() {
                                     <span className="text-transparent md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal">1</span>
                                 </div>
                             </div>
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px]  xxs:col-span-4 col-span-full md:col-span-6 lg:col-span-4 order- border border-[#bcbcbc] justify-center items-center gap-2.5 hidden md:flex md:order-4">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px]  order- border border-[#bcbcbc] justify-center items-center gap-2.5 hidden md:flex md:order-4">
                                 <div className="flex flex-col">
-                                    <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total stack</span>
+                                    <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Total Stake</span>
 
                                     <span className="text-black md:text-[24px] text-[16px] xl:text-[32px] font-bold font-inter capitalize">19,262,198 RB </span>
 
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal">-168,775$</span>
                                 </div>
                             </div>
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] xxs:col-span-4 col-span-full md:col-span-6 lg:col-span-4 order-5 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-5">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] order-5 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-5">
                                 <div className="flex flex-col">
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">APY</span>
 
@@ -53,7 +54,7 @@ function Stack() {
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal">-$</span>
                                 </div>
                             </div>
-                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] lg:col-span-4 xxs:col-span-6 col-span-full order-2 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-6 ">
+                            <div className="xl:p-6 md:p-[18px] xs:p-3 p-2 bg-[#fdfdfd] rounded-[10px] order-2 border border-[#bcbcbc] justify-center items-center gap-2.5 flex md:order-6 ">
                                 <div className="flex flex-col">
                                     <span className="text-black md:text-[16px] text-[12px] xl:text-[20px] font-medium font-inter capitalize leading-normal pb-3">Current epoch</span>
 
@@ -119,9 +120,9 @@ function Stack() {
                     </div>
                 </div>
             </div>
-
+<Footer/>
         </div>
     );
 }
 
-export default Stack;
+export default Stake;

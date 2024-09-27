@@ -1,12 +1,13 @@
 import { i1, i2, sidea, swap, swapt } from "../assets";
+import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 
 function WithdrawCrypto() {
     return (
         <div className="">
-            <div className="lg:px-16 lg:py-7 py-4 md:px-8 px-4 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+            <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
                 <Sidebar />
-                <div className="flex flex-col gap-8 w-full">
+                <div className="flex flex-col gap-8 w-full items-center">
                     <div className="min-h-[238px] withdraw-bg p-8 rounded-2xl border border-[#d9d9d9] flex-col justify-start items-start gap-2.5 hidden md:inline-flex">
                         <div className="min-h-[174px] flex-col justify-start items-start gap-8 flex">
                             <div className="min-h-[94px] flex-col justify-start items-start gap-4 flex">
@@ -71,7 +72,7 @@ function WithdrawCrypto() {
                         </div>
                         <div className="swap transition-all duration-200 md:w-fit w-full flex justify-center">Swap</div>
                     </div>
-                    <div className="3xl:w-[1027px] max-w-full lg:pt-8 pt-2 flex-col justify-start items-start gap-4 lg:gap-6 inline-flex">
+                    <div className="3xl:w-[1027px] max-w-full lg:pt-8 pt-2 flex-col justify-center items-start gap-4 lg:gap-6 inline-flex">
                         <div className="h-[0px] w-full border border-[#bcbcbc]"></div>
                         <div className="flex-col justify-start items-start gap-4 lg:gap-8 flex">
                             <div className="lg:text-xl md:text-[17px] text-[14px]">
@@ -94,7 +95,7 @@ function WithdrawCrypto() {
                             </div>
                         </div>
                     </div>
-                    <div className="md:px-10 lg:pt-8 pt-2">
+                    {/* <div className="md:px-10 lg:pt-8 pt-2">
                         <div className="w-full max-w-full lg:min-h-[242px] flex-col justify-center items-center gap-4 lg:gap-8 inline-flex md:bg-transparent bg-[#F4F4F4] rounded-[16px] p-4">
                             <div className="lg:min-h-[138px] w-full flex-col justify-start items-center lg:gap-12 gap-3 flex">
                                 <div className="text-center text-[#1f1f1f] md:text-[18px] text-[12px] lg:text-2xl  font-bold font-inter">HISTORY</div>
@@ -115,10 +116,10 @@ function WithdrawCrypto() {
                                 <div className="text-center text-[#1f1f1f] group-hover:text-white lg:text-xl  md:text-[18px] text-[12px]  font-semibold font-inter">Connect BTC</div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
-
+                        <Footer/>
         </div>
     );
 }

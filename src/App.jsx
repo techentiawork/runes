@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import { Airdrop, CryptoHistory, DepositCrypto, WithdrawCrypto,Blog } from './components';
 import { Home } from './pages'
 import Dashboard from './components/Dashboard';
-import Stack from './components/Stack';
+import Stake from './components/Stake';
 function App() {
   return (
     <>
@@ -17,7 +17,7 @@ function App() {
           <Route path="/airdrop" element={<Airdrop />} />
           <Route path="/history" element={<CryptoHistory />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/stack" element={<Stack />} />
+          <Route path="/stake" element={<Stake />} />
           <Route path="/blog" element={<Blog />} />
         </Routes>
       </div>

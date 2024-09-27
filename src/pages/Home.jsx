@@ -550,6 +550,8 @@ function Home() {
                                 <div className="w-[80%] lg:w-[280px]">
                                     <Lottie animationData={govt} loop={true} />
                                 </div>
+
+                                
                             </div>
                         </div>
                         <div className="hbc flex justify-between w-full md:px-16 px-4 lg:px-[120px] min-h-[158px] lg:min-h-[560px] items-center rounded-[20px] bg-[#F9FAF9] py-4 lg:order-1">

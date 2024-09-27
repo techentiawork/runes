@@ -17,7 +17,7 @@ function Sidebar() {
                 <Link to={"/withdraw"} className={`w-[255px] max-w-full md:h-14 md:pr-10 xxs:pr-2 xxs:pl-4 pr-1.5 pl-1.5 md:py-4 py-1.5 rounded-xl justify-between items-center gap-6 inline-flex ${pathname == "/withdraw" ? "bg-[#5A585A] text-white" : "bg-white text-[#0f0f0f]"}`}>
                     <div className="h-6 justify-start items-center gap-2 flex">
                         {pathname == "/withdraw" ? <img src={handw} alt="Hand Wallet" /> : <img src={handd} alt="Hand dashboard" className="w-6 h-6 relative" />}
-                        <div className="text-sm font-medium font-inter leading-tight"><span className="md:block hidden">Withdraw Cyprto</span><span className="md:hidden">Bridge</span></div>
+                        <div className="text-sm font-medium font-inter leading-tight"><span className="md:block hidden">Withdraw Crypto</span><span className="md:hidden">Bridge</span></div>
                     </div>
                     <div className="md:block hidden">{pathname == "/withdraw" ? <img src={arroww} alt="Arrow White" /> : <img src={sidea} alt="Side arrow" className="w-6 h-6 relative origin-top-left" />}
                     </div>
@@ -30,12 +30,12 @@ function Sidebar() {
                     <div className="md:block hidden">{pathname == "/airdrop" ? <img src={arroww} alt="Arrow White" /> : <img src={sidea} alt="Side arrow" className="w-6 h-6 relative origin-top-left" />}
                     </div>
                 </Link>
-                <Link to={"/stack"} className={`w-[255px] max-w-full md:h-14 md:pr-10 xxs:pr-2 xxs:pl-4 pr-1.5 pl-1.5 md:py-4 py-1.5 rounded-xl justify-between items-center gap-6 inline-flex ${pathname == "/stack" ? "bg-[#5A585A] text-white" : "bg-white text-[#0f0f0f]"}`}>
+                <Link to={"/stake"} className={`w-[255px] max-w-full md:h-14 md:pr-10 xxs:pr-2 xxs:pl-4 pr-1.5 pl-1.5 md:py-4 py-1.5 rounded-xl justify-between items-center gap-6 inline-flex ${pathname == "/stake" ? "bg-[#5A585A] text-white" : "bg-white text-[#0f0f0f]"}`}>
                     <div className="h-6 justify-start items-center gap-2 flex">
-                        {pathname == "/stack" ? <img src={handw} alt="Hand Wallet" /> : <img src={handd} alt="Hand dashboard" className="w-6 h-6 relative" />}
-                        <div className="text-sm font-medium font-inter leading-tight">Stack</div>
+                        {pathname == "/stake" ? <img src={handw} alt="Hand Wallet" /> : <img src={handd} alt="Hand dashboard" className="w-6 h-6 relative" />}
+                        <div className="text-sm font-medium font-inter leading-tight">Stake</div>
                     </div>
-                    <div className="md:block hidden">{pathname == "/stack" ? <img src={arroww} alt="Arrow White" /> : <img src={sidea} alt="Side arrow" className="w-6 h-6 relative origin-top-left" />}
+                    <div className="md:block hidden">{pathname == "/stake" ? <img src={arroww} alt="Arrow White" /> : <img src={sidea} alt="Side arrow" className="w-6 h-6 relative origin-top-left" />}
                     </div>
                 </Link>
                 <Link to={"/blog"} className={`w-[255px] max-w-full md:h-14 md:pr-10 xxs:pr-2 xxs:pl-4 pr-1.5 pl-1.5 md:py-4 py-1.5 rounded-xl justify-between items-center gap-6 inline-flex ${pathname == "/blog" ? "bg-[#5A585A] text-white" : "bg-white text-[#0f0f0f]"}`}>
