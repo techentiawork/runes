@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import {message} from "antd";
 
 function Dashboard() {
     const [username, setUsername] = useState("");
@@ -14,8 +15,9 @@ function Dashboard() {
     function handleLogin() {
         if (username === correctUser && password === correctPass) {
             navigate("/blogs");
+            message.success("Login Successfull!");
         } else {
-            alert("Incorrect username or password");
+            message.error("Incorrect details entered!")
         }
     }
 
