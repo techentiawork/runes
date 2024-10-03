@@ -80,7 +80,9 @@ function Footer() {
                     <div className="justify-start items-center xxs:gap-4 gap-2 inline-flex">
                         <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Terms of use</Link>
                         <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Privacy policy</Link>
-                        <Link to="/blogs" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Cookie Preferences</Link>
+                        <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Cookie Preferences</Link>
+                        <Link to="/login" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Admin</Link>
+
                     </div>
                 </div>
             </div>

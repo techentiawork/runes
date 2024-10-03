@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
-import { Airdrop, CryptoHistory, DepositCrypto, WithdrawCrypto, Blog, Navbar, Alert, Dashboard, Stake, } from "./components";
+import { Airdrop, CryptoHistory, DepositCrypto, WithdrawCrypto, Blog, Navbar, Alert, Dashboard, Stake,Login} from "./components";
 import { BlogAdd, BlogDashboard, Home } from "./pages";
 import { useDispatch, useSelector } from "react-redux";
 import { setAlert, setBlogs } from "./store/ui";
@@ -53,6 +53,7 @@ function App() {
           <Route path="/blogs" element={<BlogDashboard />} />
           <Route path="/blogs/:id" element={<BlogUpdate />} />
           <Route path="/add" element={<BlogAdd />} />
+          <Route path="/login" element={<Login/>} />
         </Routes>
       </div>
     </>

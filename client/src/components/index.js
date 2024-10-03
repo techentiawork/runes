@@ -12,11 +12,12 @@ import BlogCard from "./BlogCard";
 import DashNav from "./DashNav";
 import SideNav from "./SideNav";
 import Alert from "./Alert";
+import Login from "./Login"
 
 export {
     Alert,
     SideNav,
     DashNav,
     BlogCard,
-    Navbar, Sidebar, DepositCrypto, WithdrawCrypto, Airdrop, CryptoHistory, Dashboard, Stake, Footer, Blog
+    Navbar, Sidebar, DepositCrypto, WithdrawCrypto, Airdrop, CryptoHistory, Dashboard, Stake, Footer, Blog, Login
 }
