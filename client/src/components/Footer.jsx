@@ -78,10 +78,10 @@ function Footer() {
             <div className="w-full pb-8">
                 <div className="justify-center w-full xxs:px-4 px-2 items-center gap-[15px] inline-flex">
                     <div className="justify-start items-center xxs:gap-4 gap-2 inline-flex">
-                        <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Terms of use</Link>
-                        <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Privacy policy</Link>
-                        <Link to="/" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Cookie Preferences</Link>
-                        <Link to="/login" className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Admin</Link>
+                        <Link to="/"  onClick={()=>{window.scrollTo(0,0)}} className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Terms of use</Link>
+                        <Link to="/"onClick={()=>{window.scrollTo(0,0)}} className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Privacy policy</Link>
+                        <Link to="/" onClick={()=>{window.scrollTo(0,0)}}className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Cookie Preferences</Link>
+                        <Link to="/login" onClick={()=>{window.scrollTo(0,0)}} className="text-[#5a585a] text-xs font-medium font-inter leading-3 tracking-wide">Admin</Link>
 
                     </div>
                 </div>
