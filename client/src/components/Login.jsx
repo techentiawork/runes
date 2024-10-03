@@ -23,34 +23,36 @@ function Dashboard() {
 
     return (
         <div>
-            <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
-                <Sidebar />
+           <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="flex flex-col justify-center items-center space-y-6 bg-white shadow-lg p-8 rounded-lg">
+        <h1 className="font-bold text-4xl mb-4 text-gray-800">Admin Login</h1>
+        
+        <input 
+            type="text" 
+            placeholder="Enter Username" 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+        />
+        
+        <input 
+            type="password" 
+            placeholder="Enter Password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+        />
+        
+        <button 
+            className={`w-80 bg-black text-white px-4 py-2 rounded-lg hover:cursor-pointer transition disabled:opacity-50`}
+            disabled={username === "" || password === ""}
+            onClick={handleLogin}
+        >
+            Login
+        </button>
+    </div>
+</div>
 
-                <div className="flex flex-col justify-center items-start space-y-4 mr-[600px]">
-                    <h1 className="font-bold text-4xl mb-8">Admin Login</h1>
-                    <input 
-                        type="text" 
-                        placeholder="Enter Username" 
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)} 
-                        className="border p-2 rounded"
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Enter Password" 
-                        value={password} 
-                        onChange={(e) => setPassword(e.target.value)} 
-                        className="border p-2 rounded"
-                    />
-                    <button 
-                        className="bg-black text-white px-4 py-2 rounded disabled:opacity-50"
-                        disabled={username === "" || password === ""}
-                        onClick={handleLogin}
-                    >
-                        Login
-                    </button>
-                </div>
-            </div>
 
             <Footer />
         </div>

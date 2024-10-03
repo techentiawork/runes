@@ -1,6 +1,12 @@
+import { LogoutOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 function DashNav() {
+    const navigate = useNavigate();
+
 
     return (
         <div className="pl-[19px] w-[100%] h-[56px] xlg:h-[68px] pr-8 py-3 bg-white border-b border-[#d0d0d0] justify-between items-center inline-flex gap-4">
@@ -15,10 +21,11 @@ function DashNav() {
                                 </svg>
                             </div>
                             <div className="justify-start w-fit items-center gap-0.5 flex">
-                                <input type="text" className="text-[#868c93] w-[100%] border-none outline-none text-sm placeholder:text-sm placeholder:px-1 font-normal font-roboto leading-tight" name="query" id="query" placeholder="Search" />
-                            </div>
+                                <input type="text" className="text-[#868c93] w-[100%] border-none outline-none text-sm placeholder:text-sm placeholder:px-1 font-normal font-roboto leading-tight" name="query" id="query" placeholder="Search" /> 
+                            </div>   
                         </div>
                     </div>
+                  <div onClick={()=>{navigate("/")}} className="hover:cursor-pointer"> <LogoutOutlined /> </div> 
                 </div>
             </div>
         </div>
