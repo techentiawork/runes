@@ -23,35 +23,35 @@ function Dashboard() {
 
     return (
         <div>
-           <div className="min-h-screen flex justify-center items-center bg-gray-100">
-    <div className="flex flex-col justify-center items-center space-y-6 bg-white shadow-lg p-8 rounded-lg">
-        <h1 className="font-bold text-4xl mb-4 text-gray-800">Admin Login</h1>
-        
-        <input 
-            type="text" 
-            placeholder="Enter Username" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-        />
-        
-        <input 
-            type="password" 
-            placeholder="Enter Password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
-        />
-        
-        <button 
-            className={`w-80 bg-black text-white px-4 py-2 rounded-lg hover:cursor-pointer transition disabled:opacity-50`}
-            disabled={username === "" || password === ""}
-            onClick={handleLogin}
-        >
-            Login
-        </button>
-    </div>
-</div>
+            <div className="min-h-96 flex justify-center items-center bg-gray-100">
+                <div className="flex flex-col justify-center items-center space-y-6 bg-white shadow-lg p-8 rounded-lg w-[600px] h-[350px] mt-28 mb-36 ">
+                    <h1 className="font-bold text-4xl mb-4 text-gray-800">Admin Login</h1>
+
+                    <input
+                        type="text"
+                        placeholder="Enter Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                    />
+
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-80 border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                    />
+
+                    <button
+                        className={`w-80 bg-black text-white px-4 py-2 rounded-lg hover:cursor-pointer transition disabled:opacity-50`}
+                        disabled={username === "" || password === ""}
+                        onClick={handleLogin}
+                    >
+                        Login
+                    </button>
+                </div>
+            </div>
 
 
             <Footer />
