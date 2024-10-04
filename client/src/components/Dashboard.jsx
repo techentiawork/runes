@@ -184,7 +184,7 @@ function Dashboard() {
       </div>
       <div className="hidden lg:block mt-10 w-full h-[1px] bg-[#bcbcbc]"></div>
 
-      <div className="lg:py-10 py-2 2xl:px-[133px] px-4 md:px-8 w-full max-w-full overflow-x-hidden flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
+      <div className="lg:py-10 py-2 2xl:px-[133px] px-4 md:px-8 w-full max-w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
         <div className="p-6 lg:p-10 rounded-[16px] border-[#D9D9D9] border-[1px] bg-white shadow-md">
           <div className="overflow-x-auto dashboard">
             <div className="grid grid-cols-5 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-[16px] md:text-xl font-semibold font-inter text-center bg-[#F4F4F4] p-3 rounded-t-lg">
