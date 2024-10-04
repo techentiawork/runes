@@ -13,8 +13,10 @@ import DashNav from "./DashNav";
 import SideNav from "./SideNav";
 import Alert from "./Alert";
 import Login from "./Login"
+import BreadCrumb from "./BreadCrumb";
 
 export {
+    BreadCrumb,
     Alert,
     SideNav,
     DashNav,

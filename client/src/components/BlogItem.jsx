@@ -1,25 +1,28 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { defImg, edit, trash } from "../assets";
 import { setAlert } from "../store/ui";
+import { Editor } from '@tinymce/tinymce-react';
 
 function BlogItem({ setDeletePopup }) {
 
     const [formData, setFormData] = useState({ img: '', title: '', heading: '', content: '' });
+    const [value, setvalue] = useState('');
 
     const { id } = useParams();
     const dispatch = useDispatch();
-    
-        const fetchBlog = async () => {
-            try {
-                const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`);
-                setFormData(res.data.blog);
-            } catch (e) {
-                dispatch(setAlert({ message: e.response.data.message, type: "error" }));
-            }
-        };
+
+    const fetchBlog = async () => {
+        try {
+            const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`);
+            setFormData(res.data.blog);
+            setvalue(res.data.blog.content)
+        } catch (e) {
+            dispatch(setAlert({ message: e.response.data.message, type: "error" }));
+        }
+    };
 
     useEffect(() => {
         fetchBlog();
@@ -32,6 +35,7 @@ function BlogItem({ setDeletePopup }) {
             console.error('No img');
             return;
         }
+        console.log(value)
 
         const data = new FormData();
         try {
@@ -44,11 +48,12 @@ function BlogItem({ setDeletePopup }) {
                 const res = await axios.put(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`, {
                     ...formData,
                     img: thumbnailResponse.data.secure_url,
+                    content: value
                 });
                 console.log(res)
                 setFormData(res.data.blog);
             } else {
-                const res = await axios.put(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`, formData);
+                const res = await axios.put(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`, { ...formData, content: value });
                 console.log(res);
             }
             dispatch(setAlert({ message: 'blog Updated successfully', type: "success" }));
@@ -61,7 +66,7 @@ function BlogItem({ setDeletePopup }) {
     };
 
     const handleChange = (e) => {
-        const { name, value, type, files } = e.target 
+        const { name, value, type, files } = e.target
 
         if (type === 'file' && files) {
             setFormData((p) => ({ ...p, [name]: files[0] }));
@@ -91,6 +96,43 @@ function BlogItem({ setDeletePopup }) {
         setFormData((p) => ({ ...p, img: null }))
     }
 
+    const handleEditorChange = (content) => {
+        setvalue(content);
+    };
+
+    const cloudinaryUpload = (blobInfo, progress) => {
+        return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append('file', blobInfo.blob());
+            formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET); // Your Cloudinary upload preset
+            formData.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME); // Your Cloudinary cloud name
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, true);
+
+            // Track upload progress
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const percentComplete = (event.loaded / event.total) * 100;
+                    progress(Math.round(percentComplete)); // Report progress to TinyMCE
+                }
+            };
+
+            // Handle success or failure
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    resolve(response.secure_url); // Return the uploaded image URL to TinyMCE
+                } else {
+                    reject('Image upload failed');
+                }
+            };
+
+            xhr.onerror = () => reject('Image upload failed');
+            xhr.send(formData);
+        });
+    };
+
     return (
         <>
             <div className="justify-start overflow-auto flex-col  w-[100%] items-start gap-1 inline-flex xlg:p-4 md:p-3 p-2.5">
@@ -117,7 +159,7 @@ function BlogItem({ setDeletePopup }) {
                                             </p>
                                         </label> :
                                         <div className="rounded-lg w-[100%] h-[260px] md:h-[360px] border-gray-400 flex flex-col justify-center items-center gap-[39px]">
-                                            <img src={typeof formData.img === 'string'?formData.img:URL.createObjectURL(formData.img)} className="rounded-lg bg-contain w-[100%] h-[100%]" alt="Preview Image" />
+                                            <img src={typeof formData.img === 'string' ? formData.img : URL.createObjectURL(formData.img)} className="rounded-lg bg-contain w-[100%] h-[100%]" alt="Preview Image" />
                                         </div>
                                 }
                             </div>
@@ -140,9 +182,29 @@ function BlogItem({ setDeletePopup }) {
                             <input type="text" id="heading" name="heading" value={formData.heading ?? ''} onChange={handleChange} placeholder="Enter heading" className="form-input text-[14px] outline-none border-b border-[#D0D2D5] py-2.5 px-1" />
                         </div>
 
-                        <h2 className="text-black font-bold text-[21px] font-inter">content</h2>
-                        <div className="form-group flex justify-end flex-col relative">
-                            <input type="text" id="content" name="content" value={formData.content ?? ''} onChange={handleChange} placeholder="Enter content" className="form-input text-[14px] outline-none border-b border-[#D0D2D5] py-2.5 px-1" />
+                        <div className="h-screen">
+
+                            <Editor
+                                apiKey={import.meta.env.VITE_TINY_API_KEY}
+                                value={value}
+                                init={{
+                                    height: 500,
+                                    menubar: true,
+                                    a11y_advanced_options: true,
+                                    plugins: [
+                                        'advlist autolink lists link image charmap preview anchor',
+                                        'searchreplace visualblocks code fullscreen',
+                                        'insertdatetime media table paste code help wordcount'
+                                    ],
+                                    toolbar:
+                                        'undo redo | formatselect | bold italic backcolor | ' +
+                                        'alignleft aligncenter alignright alignjustify | ' +
+                                        'bullist numlist outdent indent | removeformat | help | image',
+                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img {display:block; max-width: 100%; height: 370px; }',
+                                    images_upload_handler: (blobInfo, progress) => cloudinaryUpload(blobInfo, progress),
+                                }}
+                                onEditorChange={handleEditorChange}
+                            />
                         </div>
 
                         <div className="self-stretch w-full justify-end items-end gap-3 inline-flex">

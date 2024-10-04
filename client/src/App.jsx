@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { Airdrop, CryptoHistory, DepositCrypto, WithdrawCrypto, Blog, Navbar, Alert, Dashboard, Stake,Login} from "./components";
-import { BlogAdd, BlogDashboard, Home } from "./pages";
+import { BlogAdd, BlogDashboard, BlogPage, Home } from "./pages";
 import { useDispatch, useSelector } from "react-redux";
 import { setAlert, setBlogs } from "./store/ui";
 import { useEffect } from "react";
@@ -50,6 +50,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/stake" element={<Stake />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPage />} />
           <Route path="/blogs" element={<BlogDashboard />} />
           <Route path="/blogs/:id" element={<BlogUpdate />} />
           <Route path="/add" element={<BlogAdd />} />

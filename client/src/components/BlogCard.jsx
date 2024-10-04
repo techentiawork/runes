@@ -10,7 +10,7 @@ function BlogCard({ blog,link }) {
             </div>
             <div className="flex-col justify-start items-start gap-4 flex">
                 <div className="text-[#1f1f1f] text-sm font-bold font-inter uppercase">{blog.heading}</div>
-                <div className="text-[#1f1f1f] text-xs font-normal font-inter capitalize">{blog.content}</div>
+                <div className="text-[#1f1f1f] text-xs font-normal font-inter capitalize" dangerouslySetInnerHTML={{ __html: blog.content }}></div>
             </div>
         </div>
     )
