@@ -21,6 +21,25 @@ function Dashboard() {
   // Fetch transactions from backend
   //const apiUrl =  "http://localhost:5001/api";
 
+  const transactionsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(transactions.length / transactionsPerPage);
+  const startIdx = (currentPage - 1) * transactionsPerPage;
+  const endIdx = startIdx + transactionsPerPage;
+  const currentTransactions = transactions.slice(startIdx, endIdx);
+
+  const changePage = (pageNumber) => {
+    scrollToTop();
+    setCurrentPage(pageNumber);
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+
   useEffect(() => {
     axios
       .get("https://runesethbridge.onrender.com/api/transactions")
@@ -32,9 +51,6 @@ function Dashboard() {
       });
   }, []);
 
-  //backend stops
-  /*
-   */
   const dashboardData = [
     {
       date: "2 days ago",
@@ -109,9 +125,8 @@ function Dashboard() {
   ];
   return (
     <div className="">
-      {/*backend stops*/}
       <div className="lg:py-7 py-4 2xl:px-[133px] px-4 md:px-8 w-full flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
-      <Sidebar />
+        <Sidebar />
         <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 xxs:grid-cols-4 grid-cols-2 2xl:gap-16 sm:gap-8 gap-4 h-fit">
           <div className="xl:p-4 md:p-2 p-1.5 rounded-xl border border-[#bcbcbc] flex-col justify-center items-center xl:gap-3 md:gap-2 gap-1 inline-flex ">
             <img
@@ -168,148 +183,102 @@ function Dashboard() {
         </div>
       </div>
       <div className="hidden lg:block mt-10 w-full h-[1px] bg-[#bcbcbc]"></div>
+
       <div className="lg:py-10 py-2 2xl:px-[133px] px-4 md:px-8 w-full max-w-full overflow-x-hidden flex justify-between md:gap-10 gap-6 md:flex-row flex-col">
-      <div className="p-6 lg:p-10 rounded-[16px] border-[#D9D9D9] border-[1px] ">
-          <div className="grid grid-cols-1 gap-10 w-full overflow-x-auto dashboard">
-            <div className="grid grid-cols-5 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-[16px] md:text-xl font-normal font-inter text-center md:bg-transparent bg-[#F4F4F4]">
-              <div className="">Date</div>
-              <div className="">Amount</div>
-              <div className="">Tx-hash</div>
-              <div className="">from</div>
-              <div className="">To</div>
+        <div className="p-6 lg:p-10 rounded-[16px] border-[#D9D9D9] border-[1px] bg-white shadow-md">
+          <div className="overflow-x-auto dashboard">
+            <div className="grid grid-cols-5 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-[16px] md:text-xl font-semibold font-inter text-center bg-[#F4F4F4] p-3 rounded-t-lg">
+              <div>Date</div>
+              <div>Amount</div>
+              <div>Tx-hash</div>
+              <div>From</div>
+              <div>To</div>
             </div>
-            {/*
-            {dashboardData.map((item, key) => (
-              <div
-                key={key}
-                className="grid grid-cols-9 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-center text-[12px] md:text-base font-normal font-inter"
-              >
-                <div className="">{item.date}</div>
-                <div className="">{item.token}</div>
-                <div className="">{item.amount}</div>
-                <div className="flex justify-center gap-[14px] items-center">
-                  <img src={item.chain.from} alt="from" />
-                  <img src={chainarrow} alt="ChainArrow" />
-                  <img src={item.chain.to} alt="to" />
-                </div>
-                <div className="">{item.from}</div>
-                <div className="">{item.to}</div>
-                <div className="">{item.deposit}</div>
-                <div className="">{item.withdraw}</div>
+
+            {currentTransactions.length > 0 ? (
+              currentTransactions.map((transaction, key) => (
                 <div
-                  className={`${
-                    item.status == "Waiting Cliam"
-                      ? "text-[#FFAE00]"
-                      : item.status == "Processing"
-                      ? "text-[#FF3434]"
-                      : "text-[#19D300]"
-                  }`}
+                  key={key}
+                  className={`grid grid-cols-5 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-center text-[12px] md:text-base font-normal font-inter py-4 ${key % 2 === 0 ? "bg-white" : "bg-[#f9f9f9]"}`}
                 >
-                  {item.status}
+                  <div>{new Date(transaction.timestamp).toLocaleString()}</div>
+                  <div>{transaction.ethAmount}</div>
+                  <div className="truncate">{transaction.transactionHash}</div>
+                  <div className="truncate">{transaction.account}</div>
+                  <div className="truncate">{transaction.to}</div>
                 </div>
+              ))
+            ) : (
+              <div className="text-center text-gray-500 py-4">
+                Loading Transactions history...
               </div>
-            ))}
-            */}
-            <div>
-              {transactions.length > 0 ? (
-                transactions.map((transaction, key) => (
-                  <div key={key}>
-                    {
-                      <div
-                        key={transaction._id}
-                        className="grid grid-cols-5 md:min-w-[1350px] min-w-[900px] items-center gap-[21px] text-[#1f1f1f] text-center text-[12px] md:text-base font-normal font-inter"
-                      >
-                        <div>
-                          {new Date(transaction.timestamp).toLocaleString()}
-                        </div>
-
-                        <div>{transaction.ethAmount}</div>
-
-                        <div>{transaction.transactionHash}</div>
-
-                        <div>{transaction.account}</div>
-                        <div>{transaction.to}</div>
-                      </div>
-                    }
-                  </div>
-                ))
-              ) : (
-                <div>
-                  <div colSpan="6">Loading Transactions history...</div>
-                </div>
-              )}
-            </div>
-            {/* backends*/}
+            )}
           </div>
         </div>
       </div>
-      <div className="py-12 justify-center w-full items-center gap-8 inline-flex ">
+
+      {/* Pagination Controls */}
+      <div className="py-12 justify-center w-full items-center gap-8 inline-flex">
         <div className="justify-start items-center gap-4 flex">
+          {/* Previous Button */}
           <div className="px-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="12"
-              height="15"
-              viewBox="0 0 12 15"
-              fill="none"
+            <button
+              onClick={() => {changePage(currentPage - 1);scrollToTop();}}
+              disabled={currentPage === 1}
+              className={`p-2 ${currentPage === 1 ? "text-gray-400" : "text-black"}`}
             >
-              <path
-                d="M1.27429 6.19998L9.05075 0.876244C9.40988 0.630212 9.77173 0.5 10.0725 0.5C10.654 0.5 11.0137 0.966678 11.0137 1.74784V13.254C11.0137 14.0342 10.6544 14.5 10.0743 14.5C9.77309 14.5 9.41702 14.3697 9.05709 14.123L1.27701 8.79934C0.776675 8.45642 0.499592 7.99495 0.499592 7.49938C0.499478 7.00414 0.773388 6.54279 1.27429 6.19998Z"
-                fill="black"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="15"
+                viewBox="0 0 12 15"
+                fill="none"
+              >
+                <path
+                  d="M1.27429 6.19998L9.05075 0.876244C9.40988 0.630212 9.77173 0.5 10.0725 0.5C10.654 0.5 11.0137 0.966678 11.0137 1.74784V13.254C11.0137 14.0342 10.6544 14.5 10.0743 14.5C9.77309 14.5 9.41702 14.3697 9.05709 14.123L1.27701 8.79934C0.776675 8.45642 0.499592 7.99495 0.499592 7.49938C0.499478 7.00414 0.773388 6.54279 1.27429 6.19998Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
           </div>
-          <div className="justify-start items-center gap-8 flex">
-            <div className="w-[30px] h-[31px] p-2.5 bg-[#f4f4f4] rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="self-stretch text-[#1d1f23] text-base font-normal font-lato">
-                1
+
+          {/* Page Numbers */}
+          {[...Array(totalPages)].map((_, index) => (
+            <div
+              key={index}
+              onClick={() => {changePage(index + 1);scrollToTop();}}
+              className={`w-[30px] h-[31px] p-2.5 ${currentPage === index + 1 ? "bg-[#f4f4f4]" : ""} rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex cursor-pointer`}
+            >
+              <div className="text-[#1d1f23] text-base font-normal font-lato">
+                {index + 1}
               </div>
             </div>
-          </div>
-          <div className="justify-start items-center gap-8 flex">
-            <div className="w-[30px] h-[31px] p-2.5 bg-[#f4f4f4]/0 rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="self-stretch text-[#1d1f23] text-base font-normal font-lato">
-                2
-              </div>
-            </div>
-          </div>
-          <div className="justify-start items-center gap-8 flex">
-            <div className="w-[30px] h-[31px] p-2.5 bg-[#f4f4f4]/0 rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="self-stretch text-[#1d1f23] text-base font-normal font-lato">
-                3
-              </div>
-            </div>
-          </div>
-          <div className="justify-start items-center gap-8 flex">
-            <div className="w-[30px] h-[31px] p-2.5 bg-[#f4f4f4]/0 rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="self-stretch text-[#1d1f23] text-base font-normal font-lato">
-                4
-              </div>
-            </div>
-          </div>
-          <div className="justify-start items-center gap-8 flex">
-            <div className="w-[30px] h-[31px] p-2.5 bg-[#f4f4f4]/0 rounded-[5px] flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="self-stretch text-[#1d1f23] text-base font-normal font-lato">
-                5
-              </div>
-            </div>
-          </div>
+          ))}
+
+          {/* Next Button */}
           <div className="px-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="11"
-              height="15"
-              viewBox="0 0 11 15"
-              fill="none"
+            <button
+              onClick={() => {changePage(currentPage + 1)}}
+              disabled={currentPage === totalPages}
+              className={`p-2 ${currentPage === totalPages ? "text-gray-400" : "text-black"}`}
             >
-              <path
-                d="M9.75305 6.19998L1.9766 0.876244C1.61747 0.630212 1.25562 0.5 0.954847 0.5C0.37337 0.5 0.0136719 0.966678 0.0136719 1.74784V13.254C0.0136719 14.0342 0.372917 14.5 0.953034 14.5C1.25426 14.5 1.61033 14.3697 1.97025 14.123L9.75033 8.79934C10.2507 8.45642 10.5278 7.99495 10.5278 7.49938C10.5279 7.00414 10.254 6.54279 9.75305 6.19998Z"
-                fill="black"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="15"
+                viewBox="0 0 11 15"
+                fill="none"
+              >
+                <path
+                  d="M9.75305 6.19998L1.9766 0.876244C1.61747 0.630212 1.25562 0.5 0.954847 0.5C0.37337 0.5 0.0136719 0.966678 0.0136719 1.74784V13.254C0.0136719 14.0342 0.372917 14.5 0.953034 14.5C1.25426 14.5 1.61033 14.3697 1.97025 14.123L9.75033 8.79934C10.2507 8.45642 10.5278 7.99495 10.5278 7.49938C10.5279 7.00414 10.254 6.54279 9.75305 6.19998Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );
