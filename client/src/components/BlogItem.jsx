@@ -7,9 +7,8 @@ import { setAlert } from "../store/ui";
 import { Editor } from '@tinymce/tinymce-react';
 
 function BlogItem({ setDeletePopup }) {
-
     const [formData, setFormData] = useState({ img: '', title: '', heading: '', content: '' });
-    const [value, setvalue] = useState('');
+    const [value, setValue] = useState('');
 
     const { id } = useParams();
     const dispatch = useDispatch();
@@ -18,7 +17,7 @@ function BlogItem({ setDeletePopup }) {
         try {
             const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`);
             setFormData(res.data.blog);
-            setvalue(res.data.blog.content)
+            setValue(res.data.blog.content)
         } catch (e) {
             dispatch(setAlert({ message: e.response.data.message, type: "error" }));
         }
@@ -30,12 +29,10 @@ function BlogItem({ setDeletePopup }) {
     }, []);
 
     const updateBlog = async () => {
-
         if (!formData.img) {
             console.error('No img');
             return;
         }
-        console.log(value)
 
         const data = new FormData();
         try {
@@ -50,13 +47,11 @@ function BlogItem({ setDeletePopup }) {
                     img: thumbnailResponse.data.secure_url,
                     content: value
                 });
-                console.log(res)
                 setFormData(res.data.blog);
             } else {
                 const res = await axios.put(`${import.meta.env.VITE_SERVER_URL}/api/blogs/${id}`, { ...formData, content: value });
-                console.log(res);
             }
-            dispatch(setAlert({ message: 'blog Updated successfully', type: "success" }));
+            dispatch(setAlert({ message: 'Blog updated successfully', type: "success" }));
         } catch (e) {
             dispatch(setAlert({ message: e.response.data.message, type: "error" }));
             console.log(e.response.data);
@@ -74,8 +69,6 @@ function BlogItem({ setDeletePopup }) {
             setFormData((p) => ({ ...p, [name]: value }));
         }
     };
-
-    const { img } = formData;
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -97,32 +90,30 @@ function BlogItem({ setDeletePopup }) {
     }
 
     const handleEditorChange = (content) => {
-        setvalue(content);
+        setValue(content);
     };
 
     const cloudinaryUpload = (blobInfo, progress) => {
         return new Promise((resolve, reject) => {
             const formData = new FormData();
             formData.append('file', blobInfo.blob());
-            formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET); // Your Cloudinary upload preset
-            formData.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME); // Your Cloudinary cloud name
+            formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+            formData.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/image/upload`, true);
 
-            // Track upload progress
             xhr.upload.onprogress = (event) => {
                 if (event.lengthComputable) {
                     const percentComplete = (event.loaded / event.total) * 100;
-                    progress(Math.round(percentComplete)); // Report progress to TinyMCE
+                    progress(Math.round(percentComplete));
                 }
             };
 
-            // Handle success or failure
             xhr.onload = () => {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
-                    resolve(response.secure_url); // Return the uploaded image URL to TinyMCE
+                    resolve(response.secure_url);
                 } else {
                     reject('Image upload failed');
                 }
@@ -134,104 +125,134 @@ function BlogItem({ setDeletePopup }) {
     };
 
     return (
-        <>
-            <div className="justify-start overflow-auto flex-col  w-[100%] items-start gap-1 inline-flex xlg:p-4 md:p-3 p-2.5">
-                <div className="pb-[14px]">
-                    <Link to="/blogs" className="py-1.5 px-2 flex justify-center items-center gap-1 rounded-[36px] text-[#298D7C] text-center font-popins text-[14px] leading-6 font-[500]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M12.8002 7.99981L3.2002 7.9998M3.2002 7.9998L6.59431 11.1998M3.2002 7.9998L6.59431 4.7998" stroke="#298D7C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <div className="container mx-auto py-8">
+                <div className="mb-6">
+                    <Link to="/blogs" className="inline-flex items-center px-4 py-2 bg-white rounded-full text-green-600 hover:bg-green-50 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                         </svg>
-                        <p>Back to Dashboard</p>
+                        Back to Dashboard
                     </Link>
                 </div>
-                <div className="max-w-[793px] w-[100%] xlg:p-4 md:p-3 p-2.5 bg-white rounded-lg border border-[#d0d0d0] flex-col justify-start items-start gap-5 inline-flex">
-                    <div className="self-stretch flex-col justify-start items-start gap-5 flex">
 
-                        <div className="relative w-full">
-                            <input type="file" className="z-[2] opacity-0 h-[260px] md:h-[360px] relative w-[100%]" id="img" accept="image/*" name="img" onChange={handleChange} onDragOver={handleDragOver} onDrop={handleDrop} />
-                            <div className="flex w-[100%] z-[1] absolute top-0">
-                                {
-                                    !img ?
-                                        <label htmlFor="img" className="border-dashed border-2 w-[100%] h-[260px] md:h-[360px] border-gray-400 flex flex-col justify-center items-center gap-[39px]" >
-                                            <img src={defImg} alt="Default Image Icon" />
-                                            <p className="leading-6 text-[14px] font-popins text-[#676767] flex flex-wrap justify-center">
-                                                Drag or upload your photo here
-                                            </p>
-                                        </label> :
-                                        <div className="rounded-lg w-[100%] h-[260px] md:h-[360px] border-gray-400 flex flex-col justify-center items-center gap-[39px]">
-                                            <img src={typeof formData.img === 'string' ? formData.img : URL.createObjectURL(formData.img)} className="rounded-lg bg-contain w-[100%] h-[100%]" alt="Preview Image" />
-                                        </div>
-                                }
-                            </div>
-                            {
-                                img &&
-                                <div className="flex justify-between pt-2 px-1.5">
-                                    <img src={edit} alt='Edit' onClick={clearThumbnail} />
-                                    <img src={trash} alt='Trash' onClick={clearThumbnail} />
-                                </div>
-                            }
-                        </div>
+                <div className="bg-white rounded-lg shadow-lg p-8">
+                    <h1 className="text-3xl font-bold mb-8">Edit Blog Post</h1>
 
-                        <h2 className="text-black font-bold text-[21px] font-inter">Title</h2>
-                        <div className="form-group flex justify-end flex-col relative">
-                            <input type="text" id="title" name="title" value={formData.title ?? ''} onChange={handleChange} placeholder="Enter Title" className="form-input text-[14px] outline-none border-b border-[#D0D2D5] py-2.5 px-1" />
-                        </div>
-
-                        <h2 className="text-black font-bold text-[21px] font-inter">heading</h2>
-                        <div className="form-group flex justify-end flex-col relative">
-                            <input type="text" id="heading" name="heading" value={formData.heading ?? ''} onChange={handleChange} placeholder="Enter heading" className="form-input text-[14px] outline-none border-b border-[#D0D2D5] py-2.5 px-1" />
-                        </div>
-
-                        <div className="h-screen">
-
-                            <Editor
-                                apiKey={import.meta.env.VITE_TINY_API_KEY}
-                                value={value}
-                                init={{
-                                    height: 500,
-                                    menubar: true,
-                                    a11y_advanced_options: true,
-                                    plugins: [
-                                        'advlist autolink lists link image charmap preview anchor',
-                                        'searchreplace visualblocks code fullscreen',
-                                        'insertdatetime media table paste code help wordcount'
-                                    ],
-                                    toolbar:
-                                        'undo redo | formatselect | bold italic backcolor | ' +
-                                        'alignleft aligncenter alignright alignjustify | ' +
-                                        'bullist numlist outdent indent | removeformat | help | image',
-                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img {display:block; max-width: 100%; height: 370px; }',
-                                    images_upload_handler: (blobInfo, progress) => cloudinaryUpload(blobInfo, progress),
-                                }}
-                                onEditorChange={handleEditorChange}
+                    <div className="mb-8">
+                        <h2 className="text-xl font-semibold mb-4">Featured Image</h2>
+                        <div className="relative">
+                            <input
+                                type="file"
+                                className="hidden"
+                                id="img"
+                                accept="image/*"
+                                name="img"
+                                onChange={handleChange}
+                                onDragOver={handleDragOver}
+                                onDrop={handleDrop}
                             />
-                        </div>
-
-                        <div className="self-stretch w-full justify-end items-end gap-3 inline-flex">
-                            <button onClick={updateBlog} className="px-2 py-1.5 sm:w-fit w-full bg-[#e5f8f4]/70 rounded-[36px] border-2 border-[#288d7c] justify-center items-center gap-1 flex">
-                                <div className="justify-start items-start gap-2.5 flex">
-                                    <div className="text-center text-[#288d7c] text-sm font-medium font-['Poppins'] leading-normal">Save changes</div>
+                            <label
+                                htmlFor="img"
+                                className="block w-full h-64 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-green-500 transition duration-300"
+                            >
+                                {!formData.img ? (
+                                    <div className="flex flex-col items-center justify-center h-full">
+                                        <img src={defImg} alt="Default Image Icon" className="w-16 h-16 mb-4" />
+                                        <p className="text-gray-500">Drag or upload your photo here</p>
+                                    </div>
+                                ) : (
+                                    <img src={typeof formData.img === 'string' ? formData.img : URL.createObjectURL(formData.img)} className="rounded-lg bg-contain w-[100%] h-[100%]" alt="Preview Image" />
+                                )}
+                            </label>
+                            {formData.img && (
+                                <div className="absolute top-2 right-2 flex space-x-2">
+                                    <button onClick={clearThumbnail} className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100">
+                                        <img src={edit} alt="Edit" className="w-5 h-5" />
+                                    </button>
+                                    <button onClick={clearThumbnail} className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100">
+                                        <img src={trash} alt="Trash" className="w-5 h-5" />
+                                    </button>
                                 </div>
-                            </button>
+                            )}
                         </div>
                     </div>
-                    <div className="self-stretch h-px bg-[#d9d9d9]" />
-                    <div className="self-stretch justify-between items-center inline-flex">
-                        <div className="text-center text-black text-base font-semibold font-['Poppins'] leading-normal">Delete Blog</div>
-                        <div className="w-5 h-5 relative" />
+
+                    <div className="mb-6">
+                        <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">Title</label>
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            value={formData.title ?? ''}
+                            onChange={handleChange}
+                            placeholder="Enter Title"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
                     </div>
-                    <div className="sm:flex-row flex-col sm:justify-between gap-5 w-full sm:items-center inline-flex">
-                        <div className="text-[#6d6d6d] text-sm font-normal font-roboto leading-tight">NOTE: All your data according this Blog ...</div>
-                        <div className="px-2 py-1.5 rounded-[36px] border-2 cursor-pointer border-[#ff4f49] justify-center items-center gap-1 flex" onClick={() => setDeletePopup(true)}>
-                            <div className="px-1 justify-start items-start gap-2.5 flex">
-                                <div className="text-center text-[#ff4f49] text-sm font-medium font-['Poppins'] leading-normal">Delete</div>
-                            </div>
+
+                    <div className="mb-6">
+                        <label htmlFor="heading" className="block text-sm font-medium text-gray-700 mb-2">Heading</label>
+                        <input
+                            type="text"
+                            id="heading"
+                            name="heading"
+                            value={formData.heading ?? ''}
+                            onChange={handleChange}
+                            placeholder="Enter heading"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
+                    </div>
+
+                    <div className="mb-8">
+                        <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
+                        <Editor
+                            apiKey={import.meta.env.VITE_TINY_API_KEY}
+                            value={value}
+                            init={{
+                                height: 500,
+                                menubar: true,
+                                a11y_advanced_options: true,
+                                plugins: [
+                                    'advlist autolink lists link image charmap preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                    'undo redo | formatselect | bold italic backcolor | ' +
+                                    'alignleft aligncenter alignright alignjustify | ' +
+                                    'bullist numlist outdent indent | removeformat | help | image',
+                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px } img {display:block; max-width: 100%; height: auto; }',
+                                images_upload_handler: (blobInfo, progress) => cloudinaryUpload(blobInfo, progress),
+                            }}
+                            onEditorChange={handleEditorChange}
+                        />
+                    </div>
+
+                    <div className="flex justify-end mb-8">
+                        <button
+                            onClick={updateBlog}
+                            className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300"
+                        >
+                            Save changes
+                        </button>
+                    </div>
+
+                    <div className="border-t pt-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-xl font-semibold text-red-600">Delete Blog</h2>
+                        </div>
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                            <p className="text-gray-600 mb-4 sm:mb-0">NOTE: All your data related to this blog will be permanently deleted.</p>
+                            <button
+                                onClick={() => setDeletePopup(true)}
+                                className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition duration-300"
+                            >
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-
-        </>
     );
 }
 

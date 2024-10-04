@@ -4,66 +4,63 @@ import { Link, useNavigate } from "react-router-dom";
 import { BlogCard, DashNav, SideNav } from "../components";
 
 function BlogDashboard() {
-
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, [])
-
+  }, []);
+  
   const blogs = useSelector((state) => state.blogs);
-
+  
   return (
-    <div className="h-screen w-full overflow-hidden relative flex bg-[#f2f2f2]">
+    <div className="min-h-screen w-full overflow-hidden relative flex bg-gray-100">
       <SideNav />
-      <div className="flex h-[100vh] w-[100%] flex-col">
+      <div className="flex flex-col w-full">
         <DashNav />
-        <div className="justify-start overflow-auto w-[100%] items-start gap-1 inline-flex xlg:p-4 md:p-3 p-2.5">
-          <div className="w-[100%] flex-col justify-start items-start gap-3 xlg:gap-5 inline-flex md:pr-4 sm:pr-2 pr-0">
-            <div className="self-stretch pl-5 pr-2.5 py-2.5 bg-white rounded-lg border border-[#d0d0d0] justify-between items-center inline-flex">
-              <div className="justify-start items-center gap-2 flex"></div>
-              <div
-                className="h-8 md:h-9 px-2 py-1.5 cursor-pointer bg-gradient-to-b from-[#4F38DC] to-[#563CF0] rounded-[36px] justify-center items-center gap-1 flex"
+        <div className="flex-grow overflow-auto p-4 sm:p-6 lg:p-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-6 bg-white rounded-lg shadow-md p-4 flex flex-col sm:flex-row justify-between items-center">
+              <h1 className="text-2xl font-semibold text-gray-800 mb-4 sm:mb-0">Blog Dashboard</h1>
+              <button
+                className="px-4 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition duration-300 flex items-center space-x-2"
                 onClick={() => navigate("/add")}
               >
-                <div className="px-1 justify-start items-start gap-2.5 hidden md:flex">
-                  <div className="text-center text-white text-sm font-medium font-popins leading-normal">
-                    Create New
-                  </div>
-                </div>
+                <span>Create New</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
                   fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <path
-                    d="M7.99967 3.33398V12.6673M12.6663 8.00065H3.33301"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
                 </svg>
-              </div>
+              </button>
             </div>
-            <div className="w-full flex justify-center">
-              <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 grid-rows-[auto] gap-6">
-                {
-                  blogs?.map((blog, ind) =>
-                    <Link to={`/blogs/${blog._id}`} >
-                      <BlogCard blog={blog} key={ind} to={`/blogs/${blog._id}`} />
-                    </Link>
-                  )
-                }
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+              {blogs?.map((blog) => (
+                <Link key={blog._id} to={`/blogs/${blog._id}`} className="block">
+                  <div className="h-full">
+                    <BlogCard blog={blog} />
+                  </div>
+                </Link>
+              ))}
             </div>
+            {blogs?.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-600 text-lg">No blogs found. Create your first blog post!</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-
 }
 
-export default BlogDashboard
+export default BlogDashboard;
